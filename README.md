@@ -5,7 +5,7 @@
 ## Related Projects
 
   - https://github.com/Glitty/Calender-reservation
-  - https://github.com/teamName/repo
+  - https://github.com/Glitty/photo-gallery
   - https://github.com/teamName/repo
   - https://github.com/teamName/repo
 
