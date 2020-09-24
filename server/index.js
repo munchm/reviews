@@ -12,10 +12,15 @@ app.listen(port, () => {
 });
 
 
-app.get('/api/reviews:id', (req, res) => {
+app.get('/api/reviews', (req, res) => {
 
   db.getReviews((err, data) => {
-
+    if (err) {
+      console.log(err);
+      res.status(401).send();
+    } else {
+      res.status(200).send(data);
+    }
 
   });
 

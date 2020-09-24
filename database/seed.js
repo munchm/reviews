@@ -1,31 +1,11 @@
 const db = require('./index.js');
 const mongoose = require('mongoose');
 const faker = require('faker');
+const model = require('./index.js');
 
-const reviewSchema = mongoose.Schema({
+mongoose.connect('mongodb://localhost/reviews');
 
-  productId: Number,
-  userName: String,
-  // User_avatar: Photo
-  userFriends: Number,
-  userReviews: Number,
-  userPhotos: Number,
-  userEliteStatus: Boolean,
-  reviewRating: Number,
-  reviewBody: String,
-  reviewDate: Date,
-  reviewPhotos: Number,
-  atrCool: Number,
-  atrUseful: Number,
-  atrFunny: Number
-  // Photo1: Photo,
-  // Photo2: Photo,
-  // Photo3: Photo
-});
-
-
-const Review = mongoose.model('Review', reviewSchema);
-
+let Review = model.reviewModel;
 
 let seeder = () => {
 
@@ -50,13 +30,15 @@ let seeder = () => {
         atrFunny: Math.ceil(Math.random() * 3)
       };
       let review = new Review(reviewData);
-      review.save();
+      review.save(() => {
+        if(i === 100 && j === randomReviews - 1) {
+          mongoose.disconnect();
+        }
+      });
     }
   }
 
-  // for (let i = 1; i < 100; i++ ) {
 
-  // }
 };
 
 seeder();
