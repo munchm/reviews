@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher3');
+mongoose.connect('mongodb://localhost/reviews');
+
+
+
 
 let db = mongoose.connection;
-db.once('open', function() {
-  console.log('we are connected');
-});
+// db.once('open', function () {
+//   console.log('Connected db');
+// });
 
-module.exports = db;
