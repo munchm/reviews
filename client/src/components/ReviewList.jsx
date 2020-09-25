@@ -13,8 +13,10 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
+    let params = location.search.substring(1).split('=');
+    let id = params[1] || 1;
 
-    axios.get('/api/reviews/50')
+    axios.get(`/api/reviews/${id}`)
       .then((reviews) => {
         this.setState({ reviews: reviews.data });
       }
