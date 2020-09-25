@@ -1,14 +1,18 @@
-const db = require('./index.js');
+// const db = require('./index.js');
 const mongoose = require('mongoose');
 const faker = require('faker');
 const model = require('./index.js');
+var AWS = require('aws-sdk');
 
 mongoose.connect('mongodb://localhost/reviews');
 
+
+
+
 let Review = model.reviewModel;
 
-let seeder = () => {
-
+let seeder = (photos) => {
+  console.log(photos);
 
   for (let i = 1; i <= 100; i++) {
     let randomReviews = Math.ceil(Math.random() * 10);
@@ -16,7 +20,7 @@ let seeder = () => {
       reviewData = {
         productId: i,
         userName: faker.name.findName(),
-        // User_avatar: Photo
+        userAvatar: `https://photoreviews.s3-us-west-1.amazonaws.com/${photos[Math.ceil(Math.random() * photos.length) - 1].Key}`,
         userFriends: Math.ceil(Math.random() * 25),
         userReviews: Math.ceil(Math.random() * 50),
         userPhotos: Math.ceil(Math.random() * 75),
@@ -31,7 +35,7 @@ let seeder = () => {
       };
       let review = new Review(reviewData);
       review.save(() => {
-        if(i === 100 && j === randomReviews - 1) {
+        if (i === 100 && j === randomReviews - 1) {
           mongoose.disconnect();
         }
       });
@@ -41,4 +45,25 @@ let seeder = () => {
 
 };
 
-seeder();
+
+
+
+AWS.config.loadFromPath('./config.json');
+
+// Create S3 service object
+s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+
+// Create the parameters for calling listObjects
+var bucketParams = {
+  Bucket: 'photoreviews',
+};
+
+//run the seeder function once the photo data has been retrieved
+s3.listObjects(bucketParams, function (err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    seeder(data.Contents);
+    console.log("Success", data.Contents);
+  }
+});

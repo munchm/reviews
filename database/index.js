@@ -7,7 +7,7 @@ const reviewSchema = mongoose.Schema({
 
   productId: Number,
   userName: String,
-  // User_avatar: Photo
+  userAvatar: String,
   userFriends: Number,
   userReviews: Number,
   userPhotos: Number,
@@ -19,7 +19,7 @@ const reviewSchema = mongoose.Schema({
   atrCool: Number,
   atrUseful: Number,
   atrFunny: Number
-  // Photo1: Photo,
+  // photo1: Photo,
   // Photo2: Photo,
   // Photo3: Photo
 });
@@ -29,9 +29,9 @@ const Review = mongoose.model('Review', reviewSchema);
 
 
 
-let getReviews = (callback) => {
+let getReviews = (id, callback) => {
 
-  Review.find({'productId': 100}, (err, data) => {
+  Review.find({ 'productId': id }, (err, data) => {
     if (err) {
       callback(err);
     } else {
