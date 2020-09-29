@@ -12,15 +12,15 @@ mongoose.connect('mongodb://localhost/reviews');
 let Review = model.reviewModel;
 
 let seeder = (photos) => {
-  console.log(photos);
 
   for (let i = 1; i <= 100; i++) {
     let randomReviews = Math.ceil(Math.random() * 10);
     for (let j = 0; j < randomReviews; j++) {
       reviewData = {
         productId: i,
-        userName: faker.name.findName(),
+        userName: faker.name.firstName() + ' ' + faker.name.lastName().charAt(0) + '.',
         userAvatar: `https://photoreviews.s3-us-west-1.amazonaws.com/${photos[Math.ceil(Math.random() * photos.length) - 1].Key}`,
+        userLocation: faker.address.city() + ', ' + faker.address.stateAbbr(),
         userFriends: Math.ceil(Math.random() * 25),
         userReviews: Math.ceil(Math.random() * 50),
         userPhotos: Math.ceil(Math.random() * 75),
@@ -64,6 +64,5 @@ s3.listObjects(bucketParams, function (err, data) {
     console.log("Error", err);
   } else {
     seeder(data.Contents);
-    console.log("Success", data.Contents);
   }
 });
