@@ -26,7 +26,7 @@ let seeder = (photos) => {
         userPhotos: Math.ceil(Math.random() * 75),
         userEliteStatus: false,
         reviewRating: Math.ceil(Math.random() * 5),
-        reviewBody: faker.lorem.sentences(Math.ceil(Math.random() * 8)),
+        reviewBody: faker.lorem.paragraphs(Math.ceil(Math.random() * 4)),
         reviewDate: faker.date.past(),
         reviewPhotos: Math.ceil(Math.random() * 7),
         atrCool: Math.ceil(Math.random() * 3),

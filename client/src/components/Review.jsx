@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Rating from './Rating';
+
 
 const StyledReview = styled.div`
   display: flex;
@@ -7,6 +9,7 @@ const StyledReview = styled.div`
   border-bottom: 1px solid #eeeeef;
   width: 715px;
   padding: 20px;
+  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
 `;
 
 const StyledImg = styled.img`
@@ -25,7 +28,6 @@ const UserDiv = styled.div`
 
 const ReviewDiv = styled.div`
   width: 66.666%;
-  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
   color: #2b273c;
   font-weight: 400;
   font-size: 14px;
@@ -36,8 +38,8 @@ const StyledUserInfo = styled.div`
   display: inline;
   position: relative;
   float: left;
-  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: 12px;
+  line-height: 22px;
   color: #2b273c;
 
 `;
@@ -49,7 +51,6 @@ const StyledUser = styled.div`
   };
   font-weight: 700;
   font-size: 14px;
-  line-height: 20px;
 `;
 
 const StyledLocation = styled.div`
@@ -60,19 +61,34 @@ const StyledLocation = styled.div`
 
 const StyledIcon = styled.div`
   fill: rgba(241,92,0,1);
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
   height: 18px;
-  line-height: 18px
   `;
 
 const StyledSpan = styled.span`
-  vertical-align: super;
+  vertical-align: text-bottom;
 `;
 
 
+const DateSpan = styled.span`
+  color: #757280;
+`;
+
+const PhotosDiv = styled.div`
+ color: #00838f;
+ &:hover {
+  text-decoration:underline;
+
+ };
+ margin-bottom: 20px;
+`;
+
 const Review = (props) => {
+
+  let displayDate = () => {
+    let date = new Date(props.review.reviewDate);
+    return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+  };
+
 
 
   return (
@@ -90,6 +106,16 @@ const Review = (props) => {
         </StyledUserInfo>
       </UserDiv>
       <ReviewDiv>
+        <div>
+          <Rating rating={props.review.reviewRating} />
+          <DateSpan>{" " + displayDate()}</DateSpan>
+        </div>
+        <PhotosDiv>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M11.23 1A3.77 3.77 0 0115 4.77v6.46A3.77 3.77 0 0111.23 15H4.77a3.77 3.77 0 01-3.43-2.31l-.06-.06a3.61 3.61 0 01-.28-1.4V4.77A3.77 3.77 0 014.77 1h6.46zM3 4.77V11l5.73-5.44a1 1 0 011.38 0L13 8.3V4.77A1.77 1.77 0 0011.23 3H4.77A1.77 1.77 0 003 4.77zM11.23 13A1.77 1.77 0 0013 11.23v-.17l-3.58-3.4L4 12.81c.238.122.502.187.77.19h6.46zM5.02 6.83a1.2 1.2 0 110-2.4 1.2 1.2 0 010 2.4z"></path></svg>
+          <StyledSpan>
+            {" " + props.review.reviewPhotos + " photos"}
+          </StyledSpan>
+        </PhotosDiv>
         <div>{props.review.reviewBody}</div>
       </ReviewDiv>
     </StyledReview>
