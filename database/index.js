@@ -19,10 +19,8 @@ const reviewSchema = mongoose.Schema({
   reviewPhotos: Number,
   atrCool: Number,
   atrUseful: Number,
-  atrFunny: Number
-  // photo1: Photo,
-  // Photo2: Photo,
-  // Photo3: Photo
+  atrFunny: Number,
+  displayPhotos: [String]
 });
 
 

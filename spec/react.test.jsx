@@ -3,15 +3,6 @@ import { mount, shallow } from 'enzyme';
 import Review from '../client/src/components/Review.jsx';
 import axios from 'axios';
 
-// function Fixture() {
-//   return (
-//     <div>
-//       <input id="checked" defaultChecked />
-//       <input id="not" defaultChecked={false} />
-//       <input id="tertiary" defaultChecked checked={false} />
-//     </div>
-//   );
-
 let reviewData = {
   productId: 10,
   userName: 'Jorge R.',
@@ -37,15 +28,7 @@ describe('<Review />', () => {
   it(' exists', () => {
     const wrapper = mount(<Review review={reviewData} />);
     expect(wrapper.find('span')).toExist();
+    expect(wrapper.find('Rating')).toExist();
   });
 });
 
-
-
-// describe('<Review />', () => {
-//   it('component exists', () => {
-//     const wrapper = mount(<Review review={data.data}/>);
-//     // expect(wrapper.find('.sc-gtssRu jperWC')).toExist();
-//     // expect(wrapper.find('#not')).not.toBeChecked();
-//   });
-// });

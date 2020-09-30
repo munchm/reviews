@@ -31,8 +31,12 @@ let seeder = (photos) => {
         reviewPhotos: Math.ceil(Math.random() * 7),
         atrCool: Math.ceil(Math.random() * 3),
         atrUseful: Math.ceil(Math.random() * 3),
-        atrFunny: Math.ceil(Math.random() * 3)
+        atrFunny: Math.ceil(Math.random() * 3),
+        displayPhotos: []
       };
+      for (let i = 1; i <= reviewData.reviewPhotos && i <= 3; i++) {
+        reviewData.displayPhotos.push(  `https://photoreviews.s3-us-west-1.amazonaws.com/${photos[Math.ceil(Math.random() * photos.length) - 1].Key}`);
+      }
       let review = new Review(reviewData);
       review.save(() => {
         if (i === 100 && j === randomReviews - 1) {
