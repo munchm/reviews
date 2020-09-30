@@ -24,7 +24,10 @@ const StyledAttributes = styled.button`
 `;
 
 const StyledSpan = styled.span`
-  vertical-align: super;
+  display: block;
+  position: relative;
+  float: right;
+  line-height: 24px;
 `;
 
 
@@ -56,7 +59,7 @@ class Attribute extends React.Component {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d={this.props.iconKey}></path></svg>
 
         <StyledSpan >
-          {this.props.text}
+          {"   " + this.props.text}
           <b>{this.state.value}</b>
 
         </StyledSpan>

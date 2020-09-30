@@ -45,12 +45,3 @@ const Photos = (props) => {
 
 export default Photos;
 
-//if 1
-//  large photo
-//if 2
-//  small photo
-//  small photo
-//if 3
-//  large photo
-//  small photo
-//  small photo
