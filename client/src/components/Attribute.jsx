@@ -25,6 +25,7 @@ const StyledAttributes = styled.button`
 
 const StyledSpan = styled.span`
   display: block;
+  margin-left:5px;
   position: relative;
   float: right;
   line-height: 24px;
