@@ -43,6 +43,7 @@ const StyledUserInfo = styled.div`
   color: #2b273c;
 
 `;
+
 const StyledUser = styled.div`
   color: #00838f;
   &:hover {
