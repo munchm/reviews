@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-//348 x 348
-//168 x 168
-
 const LargePhoto = styled.img`
   margin: 0px 10px 10px 0px;
   border-radius: 4px;
