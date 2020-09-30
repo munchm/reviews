@@ -1,7 +1,10 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import Review from '../client/src/components/Review.jsx';
+import Photos from '../client/src/components/Photos.jsx';
+import Attribute from '../client/src/components/Attribute.jsx';
 import axios from 'axios';
+import 'jest-styled-components';
 
 let reviewData = {
   productId: 10,
@@ -18,7 +21,8 @@ let reviewData = {
   reviewPhotos: 4,
   atrCool: 2,
   atrUseful: 1,
-  atrFunny: 2
+  atrFunny: 2,
+  displayPhotos: ['cat.png', 'dog.png', 'bull.png']
 };
 
 
@@ -32,3 +36,28 @@ describe('<Review />', () => {
   });
 });
 
+
+
+describe('<Photos />', () => {
+  it(' exists', () => {
+    const wrapper = mount(<Photos photos={reviewData.displayPhotos} />);
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('img')).toExist();
+    expect(wrapper.find('span')).not.toExist();
+
+  });
+});
+
+
+describe('<Attribute />', () => {
+  it(' exists', () => {
+    const wrapper = mount(<Attribute value={reviewData.atrCool} />);
+
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('svg')).toExist();
+    expect(wrapper.find('img')).not.toExist();
+    expect(wrapper).toHaveProp('value');
+
+  });
+});
