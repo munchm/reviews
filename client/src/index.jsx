@@ -1,6 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReviewList from './components/ReviewList.jsx';
+import ReviewBar from './components/ReviewBar.jsx';
+
+class App extends React.Component {
 
 
-ReactDOM.render(<ReviewList />, document.getElementById('app'));
+
+  render() {
+    return (
+      <div>
+        <ReviewBar />
+        <ReviewList />
+      </div>
+
+    );
+  }
+}
+
+
+
+ReactDOM.render(<App />, document.getElementById('app'));
