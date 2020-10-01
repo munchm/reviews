@@ -28,9 +28,9 @@ const Review = mongoose.model('Review', reviewSchema);
 
 
 
-let getReviews = (id, callback) => {
+let getReviews = (query, id, callback) => {
 
-  Review.find({ 'productId': id }, (err, data) => {
+  Review.find({ 'productId': id, 'reviewBody': {$regex: query, $options: 'i'} }, (err, data) => {
     if (err) {
       callback(err);
     } else {

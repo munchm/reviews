@@ -4,9 +4,9 @@ import icons from '../iconKeys.js';
 
 
 const StyledBar = styled.div`
-  height: 225px;
   width: 715px;
   padding-top: 32px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #eeeeef;
   border-top: 1px solid #eeeeef;
   font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -25,7 +25,10 @@ const StyledHeader = styled.h4`
 
 
 const StyledForm = styled.form`
-  // height: 15px;
+  //  height: 0px;
+  //  width: 320px;
+  padding-bottom: 25px;
+  margin-right: 25px;
 `;
 
 const StyledSearch = styled.input`
@@ -61,6 +64,13 @@ const StyledButton = styled.button`
    border-left: 0px;
 `;
 
+const FakeImage = styled.img`
+   margin-right: 50px;
+   position: relative;
+   float: left;
+
+`;
+
 class ReviewBar extends React.Component {
   constructor(props) {
     super(props);
@@ -76,6 +86,7 @@ class ReviewBar extends React.Component {
   handleClick(e) {
     e.preventDefault();
     this.props.searchReviews(this.state.value);
+    this.setState({ value: '' });
   }
 
   render() {
@@ -87,7 +98,12 @@ class ReviewBar extends React.Component {
         <StyledForm>
           <StyledSearch onChange={(e) => this.setState({ value: e.target.value })} value={this.state.value} type='text' placeholder='Search within reviews' ></StyledSearch>
           <StyledButton onClick={(e) => this.handleClick(e)}><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d={icons.searchIcon}></path></svg></span></StyledButton>
+          <img src='https://yelpratingsstars.s3-us-west-1.amazonaws.com/fakeSort.png' width="350" height="50" ></img>
         </StyledForm>
+        <FakeImage src='https://yelpratingsstars.s3-us-west-1.amazonaws.com/fakeProfile.png' width="148" height="68"></FakeImage>
+
+        <img src='https://yelpratingsstars.s3-us-west-1.amazonaws.com/fakeRating.png' width="466" height="151"></img>
+
       </StyledBar>
     );
   }

@@ -24,12 +24,15 @@ exports[`<Attribute />  exists 1`] = `
 
 .c1 {
   display: block;
+  margin-left: 5px;
   position: relative;
   float: right;
   line-height: 24px;
 }
 
 <Attribute
+  iconKey="test"
+  text="text"
   value={2}
 >
   <styled.button
@@ -45,13 +48,15 @@ exports[`<Attribute />  exists 1`] = `
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path />
+        <path
+          d="test"
+        />
       </svg>
       <styled.span>
         <span
           className="c1"
         >
-             undefined
+             text
           <b>
             2
           </b>

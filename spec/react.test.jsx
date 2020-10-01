@@ -52,12 +52,12 @@ describe('<Photos />', () => {
 
 describe('<Attribute />', () => {
   it(' exists', () => {
-    const wrapper = mount(<Attribute value={reviewData.atrCool} />);
+    const attribute = mount(<Attribute text={'text'} iconKey={'test'} value={reviewData.atrCool} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('svg')).toExist();
-    expect(wrapper.find('img')).not.toExist();
-    expect(wrapper).toHaveProp('value');
+    expect(attribute).toMatchSnapshot();
+    expect(attribute.find('svg')).toExist();
+    expect(attribute.find('img')).not.toExist();
+    expect(attribute).toHaveProp('value');
 
   });
 });
