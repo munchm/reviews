@@ -36,7 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ReviewBar searchReviews={this.searchReviews}/>
+        <ReviewBar reviewsCount={this.state.reviews.length} searchReviews={this.searchReviews}/>
         <div>{this.state.reviews.map((review, key) => (
           <Review key={key} review={review} />
         ))}
