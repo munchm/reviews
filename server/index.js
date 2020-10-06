@@ -20,7 +20,7 @@ app.listen(port, () => {
 
 
 app.get('/api/reviews/:id', (req, res) => {
-  db.getReviews(req.params.id, (err, data) => {
+  db.getReviews(req.query.text, req.params.id, (err, data) => {
     if (err) {
       console.log(err);
       res.status(401).send();
