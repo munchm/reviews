@@ -5,7 +5,7 @@ import NewReview from './NewReview.jsx';
 
 const StyledBar = styled.div`
   width: 715px;
-  height: 275px;
+  height: 300px;
   padding-top: 32px;
   padding-bottom: 30px;
   border-bottom: 1px solid #eeeeef;
