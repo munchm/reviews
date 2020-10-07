@@ -12,7 +12,6 @@ const MainRating = styled.div`
   border-radius: 4px;
   position: relative;
   float: right;
-  margin-bottom: 24px;
   display: block;
   `;
 
