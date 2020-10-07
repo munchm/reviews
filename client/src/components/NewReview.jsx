@@ -71,7 +71,6 @@ const StyledListItem = styled.li`
   display: list-item;
     text-align: -webkit-match-parent;
   list-style: none;
-
   border: 0;
   font-size: 100%;
   font: inherit;
