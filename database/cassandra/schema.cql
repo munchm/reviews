@@ -25,7 +25,7 @@ CREATE TABLE users (
   profile_picture varchar,
   photo_count int,
   elite boolean
-)
+);
 
 // one business to many reviews
 CREATE TABLE reviews_to_business (
@@ -38,7 +38,7 @@ CREATE TABLE reviews_to_business (
   funny int,
   cool int,
   PRIMARY KEY (business_id, review_id)
-)
+);
 
 // one user to many reviews
 CREATE TABLE reviews_to_user (
@@ -51,7 +51,7 @@ CREATE TABLE reviews_to_user (
   funny int,
   cool int,
   PRIMARY KEY (user_id, review_id)
-)
+);
 
 // one review to many photos
 CREATE TABLE photos_to_review (
@@ -59,6 +59,6 @@ CREATE TABLE photos_to_review (
   review_id int,
   caption text,
   PRIMARY KEY (photo_id, review_id)
-)
+);
 
 

@@ -179,6 +179,7 @@ Returns the following status codes within the API:
 | :--- | :--- |
 | 200 | `OK` |
 | 201 | `CREATED` |
+| 204 | `DELETED` |
 | 400 | `BAD REQUEST` |
 | 404 | `NOT FOUND` |
 | 500 | `INTERNAL SERVER ERROR` |
