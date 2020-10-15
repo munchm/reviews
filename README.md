@@ -107,7 +107,6 @@ Success Status Code: `201`
 | :--- | :--- | :--- |
 | `businessId` | `number` | A business id |
 | `userId` | `number` | A user id |
-| `reviewId` | `number` | A review id |
 
 Request Body: Expects JSON with the following
 
@@ -163,12 +162,12 @@ Request Body: Expects JSON with any of the following keys (include only keys to 
 Deletes a review
 
 ```http
-DELETE /api/business/businessId/review/:reviewId
+DELETE /api/user/:userId/review/:reviewId
 ```
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `businessId` | `number` | The business id |
+| `userId` | `number` | The user id |
 | `reviewId` | `number` | The review id |
 
 Success Status Code: `204`
