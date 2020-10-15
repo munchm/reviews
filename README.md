@@ -21,20 +21,22 @@
 Retrieves all the reviews for a particular business id
 
 ```http
-GET /api/reviews/:restaurantId
+GET /api/business/:businessId/reviews
 ```
 
 Success Status Code: `200`
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `productId` | `number` | A restaurant id |
+| `businessId` | `number` | A business id |
 
 Response JSON:
 
 ```javascript
-{
-  'productId': 'Number',
+[{
+  'reviewId': 'Number',
+  'userId': 'Number',
+  'businessId': 'Number',
   'userName': 'String',
   'userAvatar': 'String',
   'userLocation': 'String',
@@ -50,27 +52,30 @@ Response JSON:
   'atrUseful': 'Number',
   'atrFunny': 'Number',
   'displayPhotos': '[String]'
-}
+}, ...]
 ```
 
 ### Get Review
-Retrieves one review from reviewId
+Retrieves a specific review
 
 ```http
-GET /api/reviews/:reviewId
+GET /api/business/:businessId/reviews/:reviewId
 ```
 
 Success Status Code: `200`
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `reviewId` | `number` | A restaurant id |
+| `businessId` | `number` | A business id |
+| `reviewId` | `number` | A review id |
 
 Response JSON:
 
 ```javascript
 {
-  'productId': 'Number',
+  'reviewId': 'Number',
+  'userId': 'Number',
+  'businessId': 'Number',
   'userName': 'String',
   'userAvatar': 'String',
   'userLocation': 'String',
@@ -93,16 +98,24 @@ Response JSON:
 Creates a new review for a particular business
 
 ```http
-POST /api/reviews/:businessId
+POST /api/business/:businessId/user/:userId/review
 ```
 
 Success Status Code: `201`
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `businessId` | `number` | A business id |
+| `userId` | `number` | A user id |
+| `reviewId` | `number` | A review id |
 
 Request Body: Expects JSON with the following
 
 ```javascript
 {
-  'productId': 'Number',
+  'reviewId': 'Number',
+  'userId': 'Number',
+  'businessId': 'Number',
   'userName': 'String',
   'userAvatar': 'String',
   'userLocation': 'String',
@@ -125,15 +138,19 @@ Request Body: Expects JSON with the following
 Updates a user's review by adding, replacing, or deleting fields
 
 ```http
-PATCH /api/reviews/:reviewId
+PATCH /api/user/:userId/review/:reviewId
 ```
 Success Status Code: `204`
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `userId` | `number` | A user id |
+| `reviewId` | `number` | A review id |
 
 Request Body: Expects JSON with any of the following keys (include only keys to be updated)
 
 ```javascript
 {
-  'productId': 'Number',
   'reviewRating': 'Number',
   'reviewBody': 'String',
   'reviewDate': 'Date',
@@ -143,16 +160,16 @@ Request Body: Expects JSON with any of the following keys (include only keys to 
 ```
 
 ### Delete Review
-Deletes a user's review for a particular restaurant id
+Deletes a review
 
 ```http
-DELETE /api/reviews/:reviewId
+DELETE /api/business/businessId/review/:reviewId
 ```
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `productId` | `number` | The restaurant id |
-| `userName` | `string` | A user's name |
+| `businessId` | `number` | The business id |
+| `reviewId` | `number` | The review id |
 
 Success Status Code: `204`
 

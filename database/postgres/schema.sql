@@ -8,7 +8,7 @@ CREATE DATABASE sdc;
 \c sdc;
 
 -- Create business table
-CREATE TABLE IF NOT EXISTS business (
+CREATE TABLE IF NOT EXISTS businesses (
   business_id SERIAL PRIMARY KEY,
   name VARCHAR(20),
   address VARCHAR(30),
@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Create review table
-CREATE TABLE IF NOT EXISTS review (
+CREATE TABLE IF NOT EXISTS reviews (
   review_id SERIAL PRIMARY KEY,
-  business_id INTEGER REFERENCES business(business_id),
+  business_id INTEGER REFERENCES businesses(business_id),
   users_id INTEGER REFERENCES users(users_id),
   stars SMALLINT,
   date DATE DEFAULT CURRENT_DATE,
@@ -45,9 +45,10 @@ CREATE TABLE IF NOT EXISTS review (
 );
 
 -- Create photo table
-CREATE TABLE IF NOT EXISTS photo (
+CREATE TABLE IF NOT EXISTS photos (
   photo_id SERIAL PRIMARY KEY,
-  business_id INTEGER REFERENCES business(business_id),
-  users_id INTEGER REFERENCES users(users_id),
+  review_id INTEGER REFERENCES reviews(review_id)
   caption TEXT
 );
+
+-- look up ratios

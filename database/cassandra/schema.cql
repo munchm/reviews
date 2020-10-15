@@ -1,12 +1,12 @@
 // schema.cql
 // Drop if exists
 
-DROP KEYSPCE IF EXISTS sdc_keyspace;
+DROP KEYSPACE IF EXISTS sdc_keyspace;
 CREATE KEYSPACE sdc_keyspace WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor' : 1 };
 
 USE sdc_keyspace;
 
-CREATE TABLE business (
+CREATE TABLE businesses (
   business_id int PRIMARY KEY,
   name varchar,
   address varchar,
@@ -27,21 +27,6 @@ CREATE TABLE users (
   elite boolean
 )
 
-CREATE TABLE review (
-  review_id int PRIMARY KEY,
-  stars smallint,
-  date date,
-  text text,
-  useful int,
-  funny int,
-  cool int
-)
-
-CREATE TABLE photo (
-  photo_id int PRIMARY KEY,
-  caption varchar
-)
-
 // one business to many reviews
 CREATE TABLE reviews_to_business (
   business_id int,
@@ -55,28 +40,25 @@ CREATE TABLE reviews_to_business (
   PRIMARY KEY (business_id, review_id)
 )
 
-// one user to one review
-CREATE TABLE user_to_review (
+// one user to many reviews
+CREATE TABLE reviews_to_user (
   review_id int,
   user_id int,
-  name varchar,
-  location varchar,
-  friends int,
-  review_count int,
-  profile_picture varchar,
-  photo_count int,
-  elite boolean,
+  stars smallint,
+  date date,
+  text text,
+  useful int,
+  funny int,
+  cool int,
   PRIMARY KEY (user_id, review_id)
 )
 
 // one review to many photos
-CREATE TABLE review_to_photos (
+CREATE TABLE photos_to_review (
   photo_id int,
-  user_id int,
-  business_id int,
   review_id int,
   caption text,
-  PRIMARY KEY (user_id, review_id, photo_id, business_id)
+  PRIMARY KEY (photo_id, review_id)
 )
 
 
