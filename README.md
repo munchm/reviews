@@ -98,7 +98,7 @@ Response JSON:
 Creates a new review for a particular business
 
 ```http
-POST /api/business/:businessId/user/:userId/review
+POST /api/business/:businessId/users/:userId/review
 ```
 
 Success Status Code: `201`
@@ -137,7 +137,7 @@ Request Body: Expects JSON with the following
 Updates a user's review by adding, replacing, or deleting fields
 
 ```http
-PATCH /api/user/:userId/review/:reviewId
+PATCH /api/users/:userId/reviews/:reviewId
 ```
 Success Status Code: `204`
 
@@ -162,7 +162,7 @@ Request Body: Expects JSON with any of the following keys (include only keys to 
 Deletes a review
 
 ```http
-DELETE /api/user/:userId/review/:reviewId
+DELETE /api/users/:userId/reviews/:reviewId
 ```
 
 | Parameter | Type | Description |

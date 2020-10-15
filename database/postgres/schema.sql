@@ -52,3 +52,7 @@ CREATE TABLE IF NOT EXISTS photos (
 );
 
 -- look up ratios
+-- 69 million users? ~ 28%?
+-- 171 million reviews? ~ 70%?
+-- 5 million businesses? ~ 2%?
+-- 10 million seeding -> ???
