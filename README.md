@@ -34,22 +34,22 @@ Response JSON:
 
 ```javascript
 {
-  'productId': 1,
-  'userName': 'Bobby Blue',
-  'userAvatar': 'https://photoreviews.s3-us-west-1.amazonaws.com/1}',
-  'userLocation': 'Los Angeles CA',
-  'userFriends': 30,
-  'userReviews': 26,
-  'userPhotos': 6,
-  'userEliteStatus': true,
-  'reviewRating': 5,
-  'reviewBody': 'Lorem inpspum asjdfh q',
-  'reviewDate': '10/01/2020',
-  'reviewPhotos': 10,
-  'atrCool': 1,
-  'atrUseful': 2,
-  'atrFunny': 3,
-  'displayPhotos': []
+  'productId': 'Number',
+  'userName': 'String',
+  'userAvatar': 'String',
+  'userLocation': 'String',
+  'userFriends': 'Number',
+  'userReviews': 'Number',
+  'userPhotos': 'Number',
+  'userEliteStatus': 'Boolean',
+  'reviewRating': 'Number',
+  'reviewBody': 'String',
+  'reviewDate': 'Date',
+  'reviewPhotos': 'Number',
+  'atrCool': 'Number',
+  'atrUseful': 'Number',
+  'atrFunny': 'Number',
+  'displayPhotos': '[String]'
 }
 ```
 
@@ -70,22 +70,22 @@ Response JSON:
 
 ```javascript
 {
-  'productId': 1,
-  'userName': 'Bobby Blue',
-  'userAvatar': 'https://photoreviews.s3-us-west-1.amazonaws.com/1}',
-  'userLocation': 'Los Angeles CA',
-  'userFriends': 30,
-  'userReviews': 26,
-  'userPhotos': 6,
-  'userEliteStatus': true,
-  'reviewRating': 5,
-  'reviewBody': 'Lorem inpspum asjdfh q',
-  'reviewDate': '10/01/2020',
-  'reviewPhotos': 10,
-  'atrCool': 1,
-  'atrUseful': 2,
-  'atrFunny': 3,
-  'displayPhotos': []
+  'productId': 'Number',
+  'userName': 'String',
+  'userAvatar': 'String',
+  'userLocation': 'String',
+  'userFriends': 'Number',
+  'userReviews': 'Number',
+  'userPhotos': 'Number',
+  'userEliteStatus': 'Boolean',
+  'reviewRating': 'Number',
+  'reviewBody': 'String',
+  'reviewDate': 'Date',
+  'reviewPhotos': 'Number',
+  'atrCool': 'Number',
+  'atrUseful': 'Number',
+  'atrFunny': 'Number',
+  'displayPhotos': '[String]'
 }
 ```
 
@@ -102,22 +102,22 @@ Request Body: Expects JSON with the following
 
 ```javascript
 {
-  'productId': 1,
-  'userName': 'Bobby Blue',
-  'userAvatar': 'https://photoreviews.s3-us-west-1.amazonaws.com/1}',
-  'userLocation': 'Los Angeles CA',
-  'userFriends': 30,
-  'userReviews': 26,
-  'userPhotos': 6,
-  'userEliteStatus': true,
-  'reviewRating': 5,
-  'reviewBody': 'Lorem inpspum asjdfh q',
-  'reviewDate': '10/01/2020',
-  'reviewPhotos': 0,
-  'atrCool': 1,
-  'atrUseful': 2,
-  'atrFunny': 3,
-  'displayPhotos': []
+  'productId': 'Number',
+  'userName': 'String',
+  'userAvatar': 'String',
+  'userLocation': 'String',
+  'userFriends': 'Number',
+  'userReviews': 'Number',
+  'userPhotos': 'Number',
+  'userEliteStatus': 'Boolean',
+  'reviewRating': 'Number',
+  'reviewBody': 'String',
+  'reviewDate': 'Date',
+  'reviewPhotos': 'Number',
+  'atrCool': 'Number',
+  'atrUseful': 'Number',
+  'atrFunny': 'Number',
+  'displayPhotos': '[String]'
 }
 ```
 
@@ -133,12 +133,12 @@ Request Body: Expects JSON with any of the following keys (include only keys to 
 
 ```javascript
 {
-  'productId': 1,
-  'reviewRating': 5,
-  'reviewBody': 'Lorem inpspum asjdfh q',
-  'reviewDate': '10/01/2020',
-  'reviewPhotos': 0,
-  'displayPhotos': []
+  'productId': 'Number',
+  'reviewRating': 'Number',
+  'reviewBody': 'String',
+  'reviewDate': 'Date',
+  'reviewPhotos': 'Number',
+  'displayPhotos': '[String]'
 }
 ```
 
