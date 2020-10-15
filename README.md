@@ -18,7 +18,7 @@
 ## Reviews API Usage
 
 ### Get Reviews
-Retrieves all the reviews for a particular restaurant id
+Retrieves all the reviews for a particular business id
 
 ```http
 GET /api/reviews/:restaurantId
@@ -53,11 +53,47 @@ Response JSON:
 }
 ```
 
-### Create Review
-Creates a new review for a particular restaurant id
+### Get Review
+Retrieves one review from reviewId
 
 ```http
-POST /api/reviews/:id
+GET /api/reviews/:reviewId
+```
+
+Success Status Code: `200`
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `reviewId` | `number` | A restaurant id |
+
+Response JSON:
+
+```javascript
+{
+  'productId': 1,
+  'userName': 'Bobby Blue',
+  'userAvatar': 'https://photoreviews.s3-us-west-1.amazonaws.com/1}',
+  'userLocation': 'Los Angeles CA',
+  'userFriends': 30,
+  'userReviews': 26,
+  'userPhotos': 6,
+  'userEliteStatus': true,
+  'reviewRating': 5,
+  'reviewBody': 'Lorem inpspum asjdfh q',
+  'reviewDate': '10/01/2020',
+  'reviewPhotos': 10,
+  'atrCool': 1,
+  'atrUseful': 2,
+  'atrFunny': 3,
+  'displayPhotos': []
+}
+```
+
+### Create Review
+Creates a new review for a particular business
+
+```http
+POST /api/reviews/:businessId
 ```
 
 Success Status Code: `201`
@@ -89,7 +125,7 @@ Request Body: Expects JSON with the following
 Updates a user's review by adding, replacing, or deleting fields
 
 ```http
-PATCH /api/reviews/:id
+PATCH /api/reviews/:reviewId
 ```
 Success Status Code: `204`
 
@@ -110,7 +146,7 @@ Request Body: Expects JSON with any of the following keys (include only keys to 
 Deletes a user's review for a particular restaurant id
 
 ```http
-DELETE /api/reviews/:id
+DELETE /api/reviews/:reviewId
 ```
 
 | Parameter | Type | Description |
