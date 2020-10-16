@@ -7,22 +7,23 @@ CREATE KEYSPACE sdc_keyspace WITH REPLICATION = {'class': 'SimpleStrategy', 'rep
 USE sdc_keyspace;
 
 CREATE TABLE businesses (
-  business_id int PRIMARY KEY,
+  id int PRIMARY KEY,
   name varchar,
   address varchar,
   city varchar,
   state varchar,
+  is_open boolean,
   review_count int,
   stars smallint
 );
 
 CREATE TABLE users (
-  user_id int PRIMARY KEY,
+  id int PRIMARY KEY,
   name varchar,
   location varchar,
   friends int,
   review_count int,
-  profile_picture varchar,
+  profile_pic varchar,
   photo_count int,
   elite boolean
 );

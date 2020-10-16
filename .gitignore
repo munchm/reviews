@@ -26,3 +26,6 @@ bundle.js
 
 # aws keys
 config.json
+
+# data csv files in database
+data
