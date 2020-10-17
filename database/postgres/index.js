@@ -8,12 +8,12 @@ client.connect(err => {
   } else {
     console.log('connected!');
   }
-})
+});
 
 const getBusinessReviews = function(callback) {
   // Get all reviews from a business
 
-  var sql = `SELECT * FROM reviews WHERE business_id = ${input}`;
+  var sql = `SELECT reviews.id, stars, date, content, useful, funny, cool, photo_url FROM reviews INNER JOIN photos ON reviews.id = photos.review_id WHERE business_id = ${input}`;
   client.query(sql, (err, res) => {
     if (err) {
       callback(err);
@@ -25,7 +25,7 @@ const getBusinessReviews = function(callback) {
 
 const getUserReviews = function(callback) {
   // Get all reviews from a user
-  var sql = `SELECT * FROM reviews WHERE users_id = ${input}`;
+  var sql = `SELECT reviews.id, stars, date, content, useful, funny, cool, photo_url FROM reviews INNER JOIN photos ON reviews.id = photos.review_id WHERE user_id = ${input}`;
   client.query(sql, (err, res) => {
     if (err) {
       callback(err);
@@ -35,14 +35,14 @@ const getUserReviews = function(callback) {
   });
 };
 
-const createReview = function(callback) {
+const createReview = function(params, callback) {
   // Create a review for a business from a user
-  var sql = ``;
-  client.query(sql, (err, res) => {
+  var sql = 'INSERT INTO reviews (id, business_id, users_id, stars, date, content, useful, funny, cool) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  client.query(sql, params, (err, data) => {
     if (err) {
       callback(err);
     } else {
-      callback(null, res);
+      callback(null, data);
     }
   });
 };

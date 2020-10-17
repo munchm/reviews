@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // data generation script
 const fs = require('fs');
 const faker = require('faker');
@@ -6,7 +7,7 @@ const csvWriter = require('csv-write-stream');
 // get a random number
 const getRandomInt = function(max) {
   return Math.floor(Math.random() * Math.floor(max));
-}
+};
 
 const businessGen = () => {
   var writer = csvWriter();
@@ -25,7 +26,7 @@ const businessGen = () => {
   }
   writer.end();
   console.log('Business data done!');
-}
+};
 
 const userGen = () => {
   var writer = csvWriter();
@@ -44,7 +45,7 @@ const userGen = () => {
   }
   writer.end();
   console.log('User data done!');
-}
+};
 
 const reviewGen = (database) => {
   var writer = csvWriter();
@@ -64,7 +65,7 @@ const reviewGen = (database) => {
   }
   writer.end();
   console.log('Review data done!');
-}
+};
 
 const photoGen = () => {
   var writer = csvWriter();
@@ -79,14 +80,14 @@ const photoGen = () => {
   }
   writer.end();
   console.log('Photo data done!');
-}
+};
 
 const dataGen = () => {
   businessGen();
   userGen();
   reviewGen();
   photoGen();
-}
+};
 
 dataGen();
 
