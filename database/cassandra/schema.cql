@@ -34,7 +34,7 @@ CREATE TABLE reviews_to_business (
   review_id int,
   stars smallint,
   date date,
-  text text,
+  content text,
   useful int,
   funny int,
   cool int,
@@ -47,7 +47,7 @@ CREATE TABLE reviews_to_user (
   user_id int,
   stars smallint,
   date date,
-  text text,
+  content text,
   useful int,
   funny int,
   cool int,
@@ -57,6 +57,7 @@ CREATE TABLE reviews_to_user (
 // one review to many photos
 CREATE TABLE photos_to_review (
   photo_id int,
+  photo_url varchar,
   review_id int,
   caption text,
   PRIMARY KEY (photo_id, review_id)
