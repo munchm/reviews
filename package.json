@@ -11,7 +11,7 @@
     "react": "webpack -d --watch",
     "server": "nodemon server/index.js",
     "create:postgres": "psql postgres < ./database/postgres/schema.sql",
-    "generate:postgres": "node --max-old-space-size=8192 database/postgres/generator.js",
+    "generate:postgres": "node --max-old-space-size=7680 database/postgres/generator.js",
     "seed:postgres": "psql postgres < ./database/postgres/seed.sql",
     "test": "jest"
   },

@@ -22,8 +22,8 @@ app.get('/api/business/:businessId/reviews', (req, res) => {
 
 });
 
-// get a specific review from business id
-app.get('/api/business/:businessId/reviews/:reviewId', (req, res) => {
+// get a list of reviews from user id
+app.get('/api/user/:userId/reviews/', (req, res) => {
 
 });
 
