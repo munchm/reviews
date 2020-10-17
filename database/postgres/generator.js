@@ -4,6 +4,25 @@ const fs = require('fs');
 const faker = require('faker');
 const csvWriter = require('csv-write-stream');
 
+// generate fake data to pick from using faker
+const randomParagraph = [];
+const randomCaption = [];
+const randomAddress = [];
+const randomCity = [];
+const randomState = [];
+const randomDate = [];
+const randomName = [];
+for (let i = 0; i < 1000; i++) {
+  randomParagraph.push(faker.lorem.paragraph());
+  randomCaption.push(faker.lorem.sentence());
+  randomAddress.push(faker.address.streetAddress());
+  randomCity.push(faker.address.city());
+  randomState.push(faker.address.state());
+  randomDate.push(faker.date.between('2020-07-01', '2020-10-05'));
+  randomName.push(faker.name.findName());
+}
+
+
 // get a random number
 const getRandomInt = function(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -16,10 +35,10 @@ const businessGen = () => {
     writer.write({
       id: i,
       name: faker.company.companyName(),
-      address: faker.address.streetAddress(),
-      city: faker.address.city(),
-      state: faker.address.state(),
-      is_open: faker.random.boolean(75),
+      address: randomAddress[Math.floor(Math.random() * randomAddress.length)],
+      city: randomCity[Math.floor(Math.random() * randomCity.length)],
+      state: randomState[Math.floor(Math.random() * randomState.length)],
+      is_open: Math.random() >= 0.2,
       review_count: getRandomInt(100),
       stars: getRandomInt(6)
     });
@@ -34,13 +53,13 @@ const userGen = () => {
   for (var i = 0; i < 700; i++) {
     writer.write({
       id: i,
-      name: faker.name.findName(),
-      location: faker.address.city(),
+      name: randomName[Math.floor(Math.random() * randomName.length)],
+      location: randomCity[Math.floor(Math.random() * randomCity.length)],
       friends: getRandomInt(100),
       review_count: getRandomInt(100),
       profile_pic: `https://loremflickr.com/g/320/240/face,picture/all/?random=${getRandomInt(1000)}`,
       photo_count: getRandomInt(100),
-      elite: faker.random.boolean(25)
+      elite: Math.random() >= 0.5
     });
   }
   writer.end();
@@ -56,8 +75,8 @@ const reviewGen = (database) => {
       business_id: getRandomInt(100),
       users_id: getRandomInt(700),
       stars: getRandomInt(6),
-      date: faker.date.between('2020-07-01', '2020-10-05'),
-      content: faker.lorem.paragraph(),
+      date: randomDate[Math.floor(Math.random() * randomDate.length)],
+      content: randomParagraph[Math.floor(Math.random() * randomParagraph.length)],
       useful: getRandomInt(10),
       funny: getRandomInt(10),
       cool: getRandomInt(10)
@@ -75,7 +94,7 @@ const photoGen = () => {
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,
       review_id: getRandomInt(1000),
-      caption: faker.lorem.sentence()
+      caption: randomCaption[Math.floor(Math.random() * randomCaption.length)]
     });
   }
   writer.end();
