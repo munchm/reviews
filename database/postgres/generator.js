@@ -35,9 +35,9 @@ const businessGen = () => {
     writer.write({
       id: i,
       name: faker.company.companyName(),
-      address: randomAddress[Math.floor(Math.random() * randomAddress.length)],
-      city: randomCity[Math.floor(Math.random() * randomCity.length)],
-      state: randomState[Math.floor(Math.random() * randomState.length)],
+      address: randomAddress[Math.floor(Math.random() * 1000)],
+      city: randomCity[Math.floor(Math.random() * 1000)],
+      state: randomState[Math.floor(Math.random() * 1000)],
       is_open: Math.random() >= 0.2,
       review_count: getRandomInt(100),
       stars: getRandomInt(6)
@@ -53,8 +53,8 @@ const userGen = () => {
   for (var i = 0; i < 700; i++) {
     writer.write({
       id: i,
-      name: randomName[Math.floor(Math.random() * randomName.length)],
-      location: randomCity[Math.floor(Math.random() * randomCity.length)],
+      name: randomName[Math.floor(Math.random() * 1000)],
+      location: randomCity[Math.floor(Math.random() * 1000)],
       friends: getRandomInt(100),
       review_count: getRandomInt(100),
       profile_pic: `https://loremflickr.com/g/320/240/face,picture/all/?random=${getRandomInt(1000)}`,
@@ -66,7 +66,7 @@ const userGen = () => {
   console.log('User data done!');
 };
 
-const reviewGen = (database) => {
+const reviewGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/reviews.csv'));
   for (var i = 0; i < 1000; i++) {
@@ -75,8 +75,8 @@ const reviewGen = (database) => {
       business_id: getRandomInt(100),
       users_id: getRandomInt(700),
       stars: getRandomInt(6),
-      date: randomDate[Math.floor(Math.random() * randomDate.length)],
-      content: randomParagraph[Math.floor(Math.random() * randomParagraph.length)],
+      date: randomDate[Math.floor(Math.random() * 1000)],
+      content: randomParagraph[Math.floor(Math.random() * 1000)],
       useful: getRandomInt(10),
       funny: getRandomInt(10),
       cool: getRandomInt(10)
@@ -94,7 +94,7 @@ const photoGen = () => {
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,
       review_id: getRandomInt(1000),
-      caption: randomCaption[Math.floor(Math.random() * randomCaption.length)]
+      caption: randomCaption[Math.floor(Math.random() * 1000)]
     });
   }
   writer.end();
