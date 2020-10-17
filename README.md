@@ -55,24 +55,23 @@ Response JSON:
 }, ...]
 ```
 
-### Get Review
-Retrieves a specific review
+### Get User Reviews
+Retrieves user's reviews
 
 ```http
-GET /api/business/:businessId/reviews/:reviewId
+GET /api/user/:userId/reviews/
 ```
 
 Success Status Code: `200`
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
-| `businessId` | `number` | A business id |
-| `reviewId` | `number` | A review id |
+| `userId` | `number` | A user id |
 
 Response JSON:
 
 ```javascript
-{
+[{
   'reviewId': 'Number',
   'userId': 'Number',
   'businessId': 'Number',
@@ -91,7 +90,7 @@ Response JSON:
   'atrUseful': 'Number',
   'atrFunny': 'Number',
   'displayPhotos': '[String]'
-}
+}, ...]
 ```
 
 ### Create Review
