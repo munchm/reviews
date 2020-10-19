@@ -30,8 +30,8 @@ CREATE TABLE users (
 
 // one business to many reviews
 CREATE TABLE reviews_to_business (
-  business_id int,
   id int,
+  business_id int,
   stars smallint,
   date varchar,
   content text,
@@ -43,8 +43,8 @@ CREATE TABLE reviews_to_business (
 
 // one user to many reviews
 CREATE TABLE reviews_to_user (
-  user_id int,
   id int,
+  user_id int,
   stars smallint,
   date date,
   content text,
