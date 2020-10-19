@@ -31,7 +31,7 @@ const getRandomInt = function(max) {
 const businessGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/business.csv'));
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 1000000; i++) {
     writer.write({
       id: i,
       name: faker.company.companyName(),
@@ -50,7 +50,7 @@ const businessGen = () => {
 const userGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/users.csv'));
-  for (var i = 0; i < 700; i++) {
+  for (var i = 0; i < 7000000; i++) {
     writer.write({
       id: i,
       name: randomName[Math.floor(Math.random() * 1000)],
@@ -69,7 +69,7 @@ const userGen = () => {
 const reviewGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/reviews.csv'));
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000000; i++) {
     writer.write({
       id: i,
       business_id: getRandomInt(100),
@@ -89,7 +89,7 @@ const reviewGen = () => {
 const photoGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/photos.csv'));
-  for (var i = 0; i < 3000; i++) {
+  for (var i = 0; i < 30000000; i++) {
     writer.write({
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,

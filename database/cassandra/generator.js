@@ -26,13 +26,13 @@ const getRandomInt = function(max) {
 };
 
 const getRandomDate = function(start, end) {
-  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().slice(0,10);
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().slice(0, 10);
 };
 
 const businessGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/cassandra/data/business.csv'));
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 1000000; i++) {
     writer.write({
       id: i,
       name: faker.company.companyName(),
@@ -51,7 +51,7 @@ const businessGen = () => {
 const userGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/cassandra/data/users.csv'));
-  for (var i = 0; i < 700; i++) {
+  for (var i = 0; i < 7000000; i++) {
     writer.write({
       id: i,
       name: randomName[Math.floor(Math.random() * 1000)],
@@ -70,7 +70,7 @@ const userGen = () => {
 const businessReviewGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/cassandra/data/businessReviews.csv'));
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000000; i++) {
     var fakeDate = getRandomDate(new Date(1970, 0, 1), new Date(2020, 0, 1));
     writer.write({
       id: i,
@@ -90,7 +90,7 @@ const businessReviewGen = () => {
 const userReviewGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/cassandra/data/userReviews.csv'));
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000000; i++) {
     var fakeDate = getRandomDate(new Date(1970, 0, 1), new Date(2020, 0, 1));
     writer.write({
       id: i,
@@ -110,7 +110,7 @@ const userReviewGen = () => {
 const photoGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/cassandra/data/photos.csv'));
-  for (var i = 0; i < 3000; i++) {
+  for (var i = 0; i < 30000000; i++) {
     writer.write({
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,
@@ -122,11 +122,12 @@ const photoGen = () => {
   console.log('Photo data done!');
 };
 
+// run each one by one
 const dataGen = () => {
-  businessGen();
-  userGen();
-  businessReviewGen();
-  userReviewGen();
+  // businessGen();
+  // userGen();
+  // businessReviewGen();
+  // userReviewGen();
   photoGen();
 };
 
