@@ -74,7 +74,7 @@ const businessReviewGen = () => {
     var fakeDate = getRandomDate(new Date(1970, 0, 1), new Date(2020, 0, 1));
     writer.write({
       id: i,
-      business_id: getRandomInt(100),
+      business_id: getRandomInt(1000000),
       stars: getRandomInt(6),
       date: fakeDate,
       content: randomParagraph[Math.floor(Math.random() * 1000)],
@@ -94,7 +94,7 @@ const userReviewGen = () => {
     var fakeDate = getRandomDate(new Date(1970, 0, 1), new Date(2020, 0, 1));
     writer.write({
       id: i,
-      user_id: getRandomInt(700),
+      user_id: getRandomInt(7000000),
       stars: getRandomInt(6),
       date: fakeDate,
       content: randomParagraph[Math.floor(Math.random() * 1000)],
@@ -114,7 +114,7 @@ const photoGen = () => {
     writer.write({
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,
-      review_id: getRandomInt(1000),
+      review_id: getRandomInt(10000000),
       caption: randomCaption[Math.floor(Math.random() * 1000)]
     });
   }
