@@ -60,7 +60,7 @@ CREATE TABLE photos_to_review (
   photo_url varchar,
   review_id int,
   caption text,
-  PRIMARY KEY (id, review_id)
+  PRIMARY KEY (review_id, id)
 );
 
 
