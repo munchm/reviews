@@ -15,3 +15,14 @@ COPY photos FROM '/Users/andrew_vuong/Desktop/HackReactor/SDC/reviews/database/p
 
 -- run this to seed
 -- psql postgres < ./database/postgres/seed.sql
+
+-- Add constraints after copying
+
+ALTER TABLE reviews
+ADD CONSTRAINT fk_business FOREIGN KEY(business_id) REFERENCES businesses(id) ON DELETE CASCADE not VALID;
+
+ALTER TABLE reviews
+ADD CONSTRAINT fk_users FOREIGN KEY(users_id) REFERENCES users(id) ON DELETE CASCADE not VALID;
+
+ALTER TABLE photos
+ADD CONSTRAINT fk_review FOREIGN KEY(review_id) REFERENCES reviews(id) ON DELETE CASCADE not VALID;

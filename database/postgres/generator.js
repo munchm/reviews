@@ -10,7 +10,6 @@ const randomCaption = [];
 const randomAddress = [];
 const randomCity = [];
 const randomState = [];
-const randomDate = [];
 const randomName = [];
 for (let i = 0; i < 1000; i++) {
   randomParagraph.push(faker.lorem.paragraph());
@@ -18,7 +17,6 @@ for (let i = 0; i < 1000; i++) {
   randomAddress.push(faker.address.streetAddress());
   randomCity.push(faker.address.city());
   randomState.push(faker.address.state());
-  randomDate.push(faker.date.between('2020-07-01', '2020-10-05'));
   randomName.push(faker.name.findName());
 }
 
@@ -28,16 +26,20 @@ const getRandomInt = function(max) {
   return Math.floor(Math.random() * Math.floor(max));
 };
 
+const getRandomDate = function(start, end) {
+  return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toISOString().slice(0, 10);
+};
+
 const businessGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/business.csv'));
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 1000000; i++) {
     writer.write({
       id: i,
       name: faker.company.companyName(),
-      address: randomAddress[Math.floor(Math.random() * randomAddress.length)],
-      city: randomCity[Math.floor(Math.random() * randomCity.length)],
-      state: randomState[Math.floor(Math.random() * randomState.length)],
+      address: randomAddress[Math.floor(Math.random() * 1000)],
+      city: randomCity[Math.floor(Math.random() * 1000)],
+      state: randomState[Math.floor(Math.random() * 1000)],
       is_open: Math.random() >= 0.2,
       review_count: getRandomInt(100),
       stars: getRandomInt(6)
@@ -50,11 +52,11 @@ const businessGen = () => {
 const userGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/users.csv'));
-  for (var i = 0; i < 700; i++) {
+  for (var i = 0; i < 7000000; i++) {
     writer.write({
       id: i,
-      name: randomName[Math.floor(Math.random() * randomName.length)],
-      location: randomCity[Math.floor(Math.random() * randomCity.length)],
+      name: randomName[Math.floor(Math.random() * 1000)],
+      location: randomCity[Math.floor(Math.random() * 1000)],
       friends: getRandomInt(100),
       review_count: getRandomInt(100),
       profile_pic: `https://loremflickr.com/g/320/240/face,picture/all/?random=${getRandomInt(1000)}`,
@@ -66,17 +68,18 @@ const userGen = () => {
   console.log('User data done!');
 };
 
-const reviewGen = (database) => {
+const reviewGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/reviews.csv'));
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000000; i++) {
+    var fakeDate = getRandomDate(new Date(1970, 0, 1), new Date(2020, 0, 1));
     writer.write({
       id: i,
-      business_id: getRandomInt(100),
-      users_id: getRandomInt(700),
+      business_id: getRandomInt(1000000),
+      users_id: getRandomInt(7000000),
       stars: getRandomInt(6),
-      date: randomDate[Math.floor(Math.random() * randomDate.length)],
-      content: randomParagraph[Math.floor(Math.random() * randomParagraph.length)],
+      date: fakeDate,
+      content: randomParagraph[Math.floor(Math.random() * 1000)],
       useful: getRandomInt(10),
       funny: getRandomInt(10),
       cool: getRandomInt(10)
@@ -89,22 +92,23 @@ const reviewGen = (database) => {
 const photoGen = () => {
   var writer = csvWriter();
   writer.pipe(fs.createWriteStream('./database/postgres/data/photos.csv'));
-  for (var i = 0; i < 3000; i++) {
+  for (var i = 0; i < 30000000; i++) {
     writer.write({
       id: i,
       photo_url: `https://loremflickr.com/g/320/240/food,review/all/?random=${getRandomInt(1000)}`,
-      review_id: getRandomInt(1000),
-      caption: randomCaption[Math.floor(Math.random() * randomCaption.length)]
+      review_id: getRandomInt(10000000),
+      caption: randomCaption[Math.floor(Math.random() * 1000)]
     });
   }
   writer.end();
   console.log('Photo data done!');
 };
 
+// run each one by one
 const dataGen = () => {
-  businessGen();
-  userGen();
-  reviewGen();
+  // businessGen();
+  // userGen();
+  // reviewGen();
   photoGen();
 };
 

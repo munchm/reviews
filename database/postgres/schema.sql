@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS users (
 -- Create review table
 CREATE TABLE IF NOT EXISTS reviews (
   id SERIAL PRIMARY KEY,
-  business_id INTEGER REFERENCES businesses(id),
-  users_id INTEGER REFERENCES users(id),
+  business_id INTEGER,
+  users_id INTEGER,
   stars SMALLINT,
   date VARCHAR(70),
   content TEXT,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 CREATE TABLE IF NOT EXISTS photos (
   id SERIAL PRIMARY KEY,
   photo_url VARCHAR,
-  review_id INTEGER REFERENCES reviews(id),
+  review_id INTEGER,
   caption TEXT
 );
 
