@@ -52,6 +52,11 @@ CREATE TABLE IF NOT EXISTS photos (
   caption TEXT
 );
 
+-- Create indexes
+CREATE INDEX idx_review_businessId ON reviews(business_id);
+CREATE INDEX idx_review_userId ON reviews(users_id);
+CREATE INDEX idx_photo_reviewId ON photos(review_id);
+
 -- run this to create
 -- psql postgres < ./database/postgres/schema.sql
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 5555;
-const db = require('../database');
+const db = require('../database/legacy');
 const bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/../client/dist'));
