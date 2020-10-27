@@ -36,7 +36,6 @@ const getUserReviews = function(userId, callback) {
 
 const createReview = function(review, callback) {
   // Create a review for a business from a user
-  console.log(review);
   var sql = `INSERT INTO reviews (business_id, users_id, stars, date, content, useful, funny, cool) VALUES (${review.businessId}, ${review.userId}, ${review.stars}, ${review.date}, ${review.content}, ${review.useful}, ${review.funny}, ${review.cool});`;
   client.query(sql, (err, data) => {
     if (err) {
