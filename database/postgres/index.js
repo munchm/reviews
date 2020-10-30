@@ -12,7 +12,19 @@ client.connect(err => {
 
 const getBusinessReviews = function(businessId, callback) {
   // Get all reviews from a business
-  var sql = `SELECT r.stars, r.date, r.content, r.useful, r.funny, r.cool, p.photo_url, p.caption FROM reviews r INNER JOIN photos p ON r.id = p.review_id WHERE r.business_id = ${businessId};`;
+  var sql = `SELECT r.stars, r.date, r.content, r.useful, r.funny, r.cool FROM reviews r WHERE r.business_id = ${businessId};`;
+  client.query(sql, (err, res) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, res);
+    }
+  });
+};
+
+const getPhotosReview = function(reviewId, callback) {
+  // Get all photos for a review
+  var sql = `SELECT photo_url, caption FROM photos WHERE review_id = ${reviewId}`;
   client.query(sql, (err, res) => {
     if (err) {
       callback(err);
@@ -24,7 +36,7 @@ const getBusinessReviews = function(businessId, callback) {
 
 const getUserReviews = function(userId, callback) {
   // Get all reviews from a user
-  var sql = `SELECT r.stars, r.date, r.content, r.useful, r.funny, r.cool, p.photo_url, p.caption FROM reviews r INNER JOIN photos p ON r.id = p.review_id WHERE r.users_id = ${userId};`;
+  var sql = `SELECT r.stars, r.date, r.content, r.useful, r.funny, r.cool FROM reviews r WHERE r.users_id = ${userId};`;
   client.query(sql, (err, res) => {
     if (err) {
       callback(err);

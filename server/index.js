@@ -33,7 +33,7 @@ if (cluster.isMaster) {
       if (err) {
         res.status(400).send('could not retrieve data');
       } else {
-        res.status(200).send(data.rows);
+        res.status(200).send(data);
       }
     });
   });
@@ -45,7 +45,19 @@ if (cluster.isMaster) {
       if (err) {
         res.status(400).send('could not retrieve data');
       } else {
-        res.status(200).send(data.rows);
+        res.status(200).send(data);
+      }
+    });
+  });
+
+  // get request for photos
+  app.get('/api/review/:reviewId/photos', (req, res) => {
+    const reviewId = req.params.reviewId;
+    db.getPhotosReview(reviewId, (err, data) => {
+      if (err) {
+        res.status(400).send('could not retrieve data');
+      } else {
+        res.status(200).send(data);
       }
     });
   });
