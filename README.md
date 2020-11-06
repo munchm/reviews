@@ -1,4 +1,4 @@
-# Project Name
+# Reviews Module
 
 > Reviews Service for a social networking/local business review site.
 
